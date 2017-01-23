@@ -33,7 +33,8 @@ public class Grille {
 					System.out.print("+   ");
 				}
 			}
-			System.out.println();
+			System.out.println("+");
+			//System.out.println();
 			for (int j=0; j<longueur; j++){
 				int a =grille[i][j].getVal();
 				if (grille[i][j].getMurG()==Case.Etat.FERME){
@@ -42,7 +43,8 @@ public class Grille {
 					System.out.format("%3d ",a);
 				}
 			}
-			System.out.println();
+			System.out.println("|");
+		//	System.out.println();
 		}
 	}
 	
@@ -67,8 +69,6 @@ public class Grille {
 				grille[h][l-1].setVal(grille[h][l].getVal());
 			}
 		}
-		//if (grille[h][l])
-		
 	}
 
 }
