@@ -2,18 +2,21 @@
 public class Case {
 	private int val;
 	private int x, y;
-	private  Mur murH;
-	private Mur murG;
+	private  Etat murH;
+	private Etat murG;
 	
-	public enum Mur {
-		ferme,
-		ouvert;
+	public enum Etat {
+		FERME,
+		OUVERT;
 	}
 
 	public Case(int val, int x, int y){
 		this.val=val;
 		this.x=x;
 		this.y=y;
+		murH=Etat.FERME;
+		murG=Etat.FERME;
+		
 	}
 	
 	public int getY(){
@@ -34,5 +37,18 @@ public class Case {
 		System.out.print("| "+val+" ");
 	}
 	
+	public Etat getMurH(){
+		return murH;
+	}
+	public Etat getMurG(){
+		return murG;
+	}
+	
+	public void setMurH(Etat MUR){
+		murH=MUR;
+	}
+	public void setMurG(Etat MUR){
+		murG=MUR;
+	}
 	
 }
