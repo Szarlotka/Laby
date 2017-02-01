@@ -52,43 +52,7 @@ public class Grille {
 		System.out.println("+");
 	}
 
-	/*public void laby(){
-		//int nbMursTombes=0;
-		while (/*nbMursTombes!=hauteur*longueur-1*//*toutChiffre()==false){
-			//determination du mur à faire tomber
-
-
-			int m=(int)Math.round(Math.random());
-			//tirage aleatoire de la case, h pr le i, l pour le j de la case
-			int h, l;
-			//m=1 : mur haut, m=0 mur gauche
-			if (m==1){
-				System.out.println("mur haut");
-				h=((int)Math.round(Math.random()*(hauteur-2)))+1; 
-				l=(int)Math.round(Math.random()*(longueur-1));
-				System.out.println(h+", "+l);
-				//si les deux cases n'ont pas la meme valeur, le mur peut être ouvert
-				if (grille[h][l].getVal()!=grille[h-1][l].getVal()){
-					grille[h][l].setMurH(Case.Etat.OUVERT);
-					//nbMursTombes++;
-					grille[h-1][l].setVal(grille[h][l].getVal());
-					etendreChiffre(grille[h-1][l].getVal(), grille[h][l].getVal());
-				}
-			}else{
-				System.out.println("mur gauche");
-				h=(int)Math.round(Math.random()*(hauteur-1)); 
-				l=((int)Math.round(Math.random()*(longueur-2)))+1;
-				System.out.println(h+", "+l);
-				if (grille[h][l].getVal()!=grille[h][l-1].getVal()){
-					grille[h][l].setMurG(Case.Etat.OUVERT);
-					//nbMursTombes++;
-					grille[h][l-1].setVal(grille[h][l].getVal());
-					etendreChiffre(grille[h][l].getVal(), grille[h][l-1].getVal());
-				}
-			}
-			affGrille();
-		}
-	}*/
+	
 
 	public void laby(){
 		//Mur mur=new Mur(0,0,0);
