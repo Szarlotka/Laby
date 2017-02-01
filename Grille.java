@@ -19,7 +19,7 @@ public class Grille {
 				grille[i][j]= new Case(val, i, j);
 			}
 		}
-		System.out.println("ok");
+		//System.out.println("ok");
 	}
 
 	public Grille(){
@@ -52,6 +52,31 @@ public class Grille {
 		System.out.println("+");
 	}
 
+	public void afflaby(){
+		for (int i=0; i<hauteur; i++){
+			for (int j=0; j<longueur; j++){
+				if (grille[i][j].getMurH()==Case.Etat.FERME){
+					System.out.print("+---");
+				}else{
+					System.out.print("+   ");
+				}
+			}
+			System.out.println("+");
+			for (int j=0; j<longueur; j++){
+				int a =grille[i][j].getVal();
+				if (grille[i][j].getMurG()==Case.Etat.FERME){
+					System.out.print("|   ");
+				}else{
+					System.out.print("    ");
+				}
+			}
+			System.out.println("|");
+		}
+		for (int i=0; i<longueur; i++){
+			System.out.print("+---");
+		}
+		System.out.println("+");
+	}
 	
 
 	public void laby(){
