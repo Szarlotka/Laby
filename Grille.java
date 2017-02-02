@@ -7,6 +7,10 @@ public class Grille {
 	private Case[][] grille;
 	private int hauteur;
 	private int longueur;
+	private int choixArrX;
+	private int choixArrY;
+	private int joueurX;
+	private int joueurY;
 
 	public Grille(int hauteur, int longueur){
 		int val=-1;
@@ -19,8 +23,12 @@ public class Grille {
 				grille[i][j]= new Case(val, i, j);
 			}
 		}
-		//System.out.println("ok");
+		choixArrX=(int)Math.round(Math.random()*(hauteur-1));
+		choixArrY=longueur-1;
+		joueurX=(int)Math.round(Math.random()*(hauteur-1));
+		joueurY=0;
 	}
+
 
 	public Grille(){
 		this(4,4);
@@ -53,6 +61,8 @@ public class Grille {
 	}
 
 	public void afflaby(){
+		//placement de l'arrivée et du joueur
+
 		for (int i=0; i<hauteur; i++){
 			for (int j=0; j<longueur; j++){
 				if (grille[i][j].getMurH()==Case.Etat.FERME){
@@ -63,12 +73,27 @@ public class Grille {
 			}
 			System.out.println("+");
 			for (int j=0; j<longueur; j++){
-				int a =grille[i][j].getVal();
-				if (grille[i][j].getMurG()==Case.Etat.FERME){
-					System.out.print("|   ");
+				//placement de l'arrivée
+				if (i==choixArrX && j==choixArrY){
+					if (grille[i][j].getMurG()==Case.Etat.FERME){
+						System.out.print("| A ");
+					}else{
+						System.out.print("  A ");
+					}
+				}else if (i==joueurX && j==joueurY){
+					if (grille[i][j].getMurG()==Case.Etat.FERME){
+						System.out.print("|[1]");
+					}else{
+						System.out.print(" [1]");
+					}
 				}else{
-					System.out.print("    ");
+					if (grille[i][j].getMurG()==Case.Etat.FERME){
+						System.out.print("|   ");
+					}else{
+						System.out.print("    ");
+					}
 				}
+
 			}
 			System.out.println("|");
 		}
@@ -77,7 +102,7 @@ public class Grille {
 		}
 		System.out.println("+");
 	}
-	
+
 
 	public void laby(){
 		//Mur mur=new Mur(0,0,0);
@@ -137,6 +162,7 @@ public class Grille {
 				}
 			}
 		}
+
 	}
 
 
@@ -168,5 +194,59 @@ public class Grille {
 		}
 	}	
 
+	public void setDepX(int x){
+		joueurX=x;
+	}
 
+	public void setDepY(int y){
+		joueurY=y;
+
+	}
+
+	public boolean gagner(){
+		if (choixArrX==joueurX && choixArrY==joueurY){
+			return true;
+		}
+		return false;
+	}
+
+	public boolean bougerPion (String direction) {
+		//gauche
+		if (direction.equals("q")){
+			if (grille[joueurX][joueurY].getMurG()==Case.Etat.FERME){
+				return false;
+			}else{
+				joueurY-=1;
+				return true;
+			}
+		}
+		//droite
+		if (direction.equals("d")){
+			if (grille[joueurX][joueurY+1].getMurG()==Case.Etat.FERME){
+				return false;
+			}else{
+				joueurY+=1;
+				return true;
+			}
+		}
+		//haut
+		if (direction.equals("z")){
+			if (grille[joueurX][joueurY].getMurH()==Case.Etat.FERME){
+				return false;
+			}else{
+				joueurX-=1;
+				return true;
+			}
+		}
+		//bas
+		if (direction.equals("s")){
+			if (grille[joueurX+1][joueurY].getMurH()==Case.Etat.FERME){
+				return false;
+			}else{
+				joueurX+=1;
+				return true;
+			}
+		}
+		return false;
+	}
 }
