@@ -1,4 +1,3 @@
-
 public class Mur {
 	private int x;
 	private int y;
